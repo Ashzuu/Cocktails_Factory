@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#menu {
+  position: sticky;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#icons-menu {
+  height: 50%;
+}
+
+.fitParent {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  border: 1px solid rgba(163, 163, 163, 0.7);
+}
