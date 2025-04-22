@@ -9,8 +9,11 @@
 
 import Route from '@adonisjs/core/services/router'
 
+const MainController = () => import('#controllers/main_controller')
 const RecipesController = () => import('#controllers/recipes_controller')
 const IngredientsController = () => import('#controllers/ingredients_controller')
+
+Route.get('/', [MainController, 'home']).as('home')
 
 Route.get('/recipes', [RecipesController, 'index']).as('recipesView')
 Route.get('/recipes/edit/:id', [RecipesController, 'displayEdit']).as('recipesEdit')

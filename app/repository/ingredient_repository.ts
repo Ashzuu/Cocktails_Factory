@@ -5,7 +5,9 @@ export class IngredientRepository {
    * Get all ingredients from the database, order by name
    */
   static async getAllIngredients(): Promise<Ingredient[]> {
-    const ingredients: Ingredient[] = await Ingredient.query().orderBy('nom')
+    const ingredients: Ingredient[] = await Ingredient.query()
+      .preload('typeIngredients')
+      .orderBy('nom')
     return ingredients
   }
 

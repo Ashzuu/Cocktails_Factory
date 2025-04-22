@@ -11,6 +11,12 @@ export default class RecipeIngredient extends BaseModel {
   @belongsTo(() => Ingredient)
   declare ingredients: BelongsTo<typeof Ingredient>
 
+  @column()
+  declare recipeId: number
+
+  @column()
+  declare ingredientId: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

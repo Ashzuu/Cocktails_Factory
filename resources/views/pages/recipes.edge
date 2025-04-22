@@ -1,0 +1,17 @@
+@layout.template({})
+
+    @slot('main')
+
+        @each(recipe in recipes)
+            @!cards({
+                upperText: recipe.type_recipe.type,
+                mainText: recipe.nom,
+                description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis perferendis hic asperiores",
+            })
+
+            @end
+        @endeach
+
+    @endslot
+
+@end

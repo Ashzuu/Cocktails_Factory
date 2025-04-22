@@ -6,7 +6,10 @@ export class RecipeRepository {
    * @returns {Promise<Recipe[]>} - A promise that resolves to an array of Recipe objects
    */
   static async getAllRecipes(): Promise<Recipe[]> {
-    const recipes: Recipe[] = await Recipe.query().preload('recipeIngredients').orderBy('nom')
+    const recipes: Recipe[] = await Recipe.query()
+      .preload('recipeIngredients')
+      .preload('typeRecipe')
+      .orderBy('nom')
     return recipes
   }
 
