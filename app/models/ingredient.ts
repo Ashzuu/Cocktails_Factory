@@ -1,15 +1,20 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import RecipeIngredient from '#models/recipe_ingredient'
-import type { HasMany, HasOne } from '@adonisjs/lucid/types/relations'
+import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import TypeIngredient from '#models/type_ingredient'
 
 export default class Ingredient extends BaseModel {
-  @hasMany(() => RecipeIngredient)
+  @hasMany(() => RecipeIngredient, {
+    foreignKey: 'id',
+  })
   declare recipeIngredients: HasMany<typeof RecipeIngredient>
 
-  @hasOne(() => TypeIngredient)
-  declare typeIngredients: HasOne<typeof TypeIngredient>
+  @belongsTo(() => TypeIngredient, {
+    foreignKey: 'id',
+    localKey: 'type_ingredient_id',
+  })
+  declare typeIngredients: BelongsTo<typeof TypeIngredient>
 
   @column({ isPrimary: true })
   declare id: number

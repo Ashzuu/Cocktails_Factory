@@ -7,7 +7,9 @@ export class RecipeRepository {
    */
   static async getAllRecipes(): Promise<Recipe[]> {
     const recipes: Recipe[] = await Recipe.query()
-      .preload('recipeIngredients')
+      .preload('recipeIngredients', (recipeIngredient) => {
+        recipeIngredient.preload('ingredients')
+      })
       .preload('typeRecipe')
       .orderBy('nom')
     return recipes

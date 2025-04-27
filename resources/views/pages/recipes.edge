@@ -1,17 +1,32 @@
-@layout.template({})
+@layout.template({title:'Mes recettes'})
 
-    @slot('main')
+  @slot('main')
+    <div id="cards">
 
-        @each(recipe in recipes)
-            @!cards({
-                upperText: recipe.type_recipe.type,
-                mainText: recipe.nom,
-                description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis perferendis hic asperiores",
-            })
+      @each(recipe in recipes)
+        @cards({
+            upperText: recipe.typeRecipe.type,
+            mainText: recipe.nom,
+        })
 
-            @end
-        @endeach
+          @slot('description')
+            <p>{{{recipe.description}}}</p>
+            <p>
+              @each(ingredient in recipe.recipeIngredients)
 
-    @endslot
+                <br>{{{ingredient.ingredients.nom + ' - ' + ingredient.quantity}}}
 
+              @endeach
+            </p>
+          @endslot
+
+        @endcards
+
+      @endeach
+
+    </div>
+  @!buttonAdd({
+    method:'get'
+  })
+  @endslot
 @end

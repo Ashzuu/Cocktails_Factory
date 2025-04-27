@@ -1,12 +1,13 @@
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import Recipe from '#models/recipe'
-import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 
 export default class TypeRecipe extends BaseModel {
-  @belongsTo(() => Recipe, {
-    foreignKey: 'type_recipe_id',
+  @hasMany(() => Recipe, {
+    foreignKey: 'type_recipes_id',
+    localKey: 'id',
   })
-  declare recipes: BelongsTo<typeof Recipe>
+  declare recipes: HasMany<typeof Recipe>
 
   @column({ isPrimary: true })
   declare id: number

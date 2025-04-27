@@ -1,4 +1,4 @@
-<a href="{{{route || ""}}}" class="group relative block bg-black">
+<a href="{{{routeName || "#"}}}" class="group relative block bg-black card">
 
   @if(urlImg)
   <img
@@ -8,18 +8,22 @@
   />
   @endif
 
-  <div class="relative p-4 sm:p-6 lg:p-8">
+  <div class="relative p-4 sm:p-6 lg:p-8 card-content">
     <p class="text-sm font-medium tracking-widest text-pink-500 uppercase">{{{upperText}}}</p>
 
     <p class="text-xl font-bold text-white sm:text-2xl">{{{mainText}}}</p>
 
     <div class="mt-32 sm:mt-48 lg:mt-64">
       <div
-        class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
-      >
-        <p class="text-sm text-white">
-          {{{description}}}
-        </p>
+        class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
+        <div class="text-sm text-white">
+          @if(await $slots.description)
+
+            {{{await $slots.description()}}}
+
+          @endif
+        </div>
+
       </div>
     </div>
   </div>

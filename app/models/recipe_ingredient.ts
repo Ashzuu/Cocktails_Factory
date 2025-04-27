@@ -5,17 +5,25 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Ingredient from '#models/ingredient'
 
 export default class RecipeIngredient extends BaseModel {
-  @belongsTo(() => Recipe)
+  @belongsTo(() => Recipe, {
+    foreignKey: 'recipe_id',
+  })
   declare recipe: BelongsTo<typeof Recipe>
 
-  @belongsTo(() => Ingredient)
+  @belongsTo(() => Ingredient, {
+    foreignKey: 'ingredient_id',
+    localKey: 'id',
+  })
   declare ingredients: BelongsTo<typeof Ingredient>
 
   @column()
-  declare recipeId: number
+  declare recipe_id: number
 
   @column()
-  declare ingredientId: number
+  declare ingredient_id: number
+
+  @column()
+  declare quantity: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

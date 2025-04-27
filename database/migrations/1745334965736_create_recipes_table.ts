@@ -13,6 +13,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('type_recipes')
         .onDelete('SET NULL')
+      table.string('description').notNullable()
       table.string('image').nullable()
     })
   }

@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{{title || "Cocktail Factory"}}}</title>
   @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
-    <main class="flex">
-      <nav>
-        @!basics.menu({})
-      </nav>
-      <div class="flex" id="content">
-        {{{await $slots.main()}}}
-      </div>
-    </main>
+  <main class="flex dark:bg-gray-900" id="principal">
+    <nav>
+      @!basics.menu({})
+    </nav>
+    <div class="flex" id="content">
+      {{{await $slots.main()}}}
+    </div>
+  </main>
 
-    @!basics.footer({})
+  @!basics.footer({})
 </body>
 </html>
