@@ -17,8 +17,11 @@ Route.get('/', [MainController, 'home']).as('home')
 
 Route.get('/recipes', [RecipesController, 'index']).as('recipesView')
 Route.get('/recipes/edit/:id', [RecipesController, 'displayEdit']).as('recipesEdit')
+Route.get('/recipes/create', [RecipesController, 'displayCreate']).as('recipesCreateView')
 Route.post('/recipes/create/:id', [RecipesController, 'create']).as('recipesCreate')
 
 Route.get('/ingredients', [IngredientsController, 'index']).as('ingredientsView')
-Route.get('/ingredients/edit/:id', [IngredientsController, 'displayEdit']).as('ingredientsEdit')
+Route.get('/ingredients/edit/:id', [IngredientsController, 'displayEdit']).as('ingredientsEditView')
+Route.post('/ingredients/edit/:id', [IngredientsController, 'edit']).as('ingredientsEdit')
 Route.post('/ingredients/create/:id', [IngredientsController, 'create']).as('ingredientsCreate')
+Route.post('/ingredients/delete/:id', [IngredientsController, 'delete']).as('IngredientsDelete')

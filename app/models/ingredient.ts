@@ -12,7 +12,6 @@ export default class Ingredient extends BaseModel {
 
   @belongsTo(() => TypeIngredient, {
     foreignKey: 'id',
-    localKey: 'type_ingredient_id',
   })
   declare typeIngredients: BelongsTo<typeof TypeIngredient>
 

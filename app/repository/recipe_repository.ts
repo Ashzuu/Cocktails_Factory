@@ -22,7 +22,10 @@ export class RecipeRepository {
    */
   static async getRecipeById(id: number): Promise<Recipe> {
     const recipe: Recipe = await Recipe.query()
-      .preload('recipeIngredients')
+      .preload('recipeIngredients', (recipeIngredient) => {
+        recipeIngredient.preload('ingredients')
+      })
+      .preload('typeRecipe')
       .where('id', id)
       .firstOrFail()
     return recipe

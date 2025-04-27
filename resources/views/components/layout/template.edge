@@ -9,6 +9,15 @@
   @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
+  @flashMessage('notificationSuccess')
+    @!basics.notificationSuccess({
+      title:'Opération effectuée avec succès !',
+      message:$message.message,
+    })
+  @end
+  @flashMessage('notificationEchec')
+
+  @end
   <main class="flex dark:bg-gray-900" id="principal">
     <nav>
       @!basics.menu({})

@@ -7,10 +7,14 @@ export default class RecipesController {
     const recipes: Recipe[] = await RecipeRepository.getAllRecipes()
     return view.render('pages/recipes', { recipes })
   }
-  public async displayEdit({ view }: HttpContext) {
-    return view.render('pages/fiches/fiche_recipe')
+  public async displayEdit({ view, params }: HttpContext) {
+    const recipe: Recipe = await RecipeRepository.getRecipeById(params.id)
+    return view.render('pages/fiches/fiche_recipe', { recipe })
   }
-  public async create({ view }: HttpContext) {
-    // Todo
+
+  public async displayCreate({ view }: HttpContext) {
+    return view.render('pages/forms/forms_recipe')
   }
+
+  public async create({ view }: HttpContext) {}
 }

@@ -16,6 +16,7 @@ body {
   top: 0;
   left: 0;
   overflow: hidden;
+  justify-content: center;
 }
 
 #icons-menu {
@@ -58,6 +59,10 @@ body {
 
 .addButton:hover {
   cursor: pointer;
+}
+
+.imgCard {
+  border-radius: 3%;
 }
 
 .card-content div {
